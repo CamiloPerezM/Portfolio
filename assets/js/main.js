@@ -109,3 +109,45 @@ sr.reveal('.home__image', {origin: 'bottom'})
 sr.reveal('.about__data, .skills__data', {origin: 'left'})
 sr.reveal('.about__image, .skills__content', {origin: 'right'})
 sr.reveal('.services__card, .projects__card', {interval: 100})
+// Language switcher functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const languageSelector = document.getElementById('languageSelector');
+    
+    // Function to update content
+    function updateContent(language) {
+        // Actualizar el CV link
+        const cvDownload = document.getElementById('cvDownload');
+        if (cvDownload && translations[language].cvLink) {
+            cvDownload.href = translations[language].cvLink;
+        }
+
+        // Actualizar traducciones
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            if (translations[language] && translations[language][key]) {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = translations[language][key];
+                } else {
+                    element.textContent = translations[language][key];
+                }
+            }
+        });
+
+        // Update placeholders
+        document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-translate-placeholder');
+            if (translations[language] && translations[language][key]) {
+                element.placeholder = translations[language][key];
+            }
+        });
+    }
+
+    // Event listener for language change
+    languageSelector.addEventListener('change', (e) => {
+        const language = e.target.value;
+        updateContent(language);
+    });
+
+    // Inicializar con el idioma actual
+    updateContent(languageSelector.value);
+});

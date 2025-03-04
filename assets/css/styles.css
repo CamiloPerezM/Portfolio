@@ -6,9 +6,9 @@
     --header-height: 3.5rem;
 
     /*----- COLORS -----*/
-    --hue: 356;
-    --first-color: hsl(var(--hue), 100%, 70%);
-    --first-color-alt: hsl(var(--hue), 56%, 35%);
+    --hue: 270;
+    --first-color: hsl(var(--hue), 85%, 75%);
+    --first-color-alt: hsl(var(--hue), 70%, 45%);
     --title-color: hsl(228, 8%, 85%);
     --text-color: hsl(228, 8%, 65%);
     --body-color: hsl(228, 15%, 20%);
@@ -34,7 +34,80 @@
     --z-tooltip: 10;
     --z-fixed: 100;
 }
+.nav__language {
+    margin: 1rem 0;
+    text-align: center;
+}
+.nav__language {
+    position: absolute;
+    right: 4.5rem;
+    top: 35%;  /* Ajustado más arriba */
+    transform: translateY(-50%);
+}
 
+/* Adjust for mobile devices */
+@media screen and (max-width: 1023px) {
+    .nav__language {
+        position: fixed;
+        top: 1.4rem;  /* Ajustado para móvil */
+        right: 5.5rem;
+    }
+}
+
+/* For larger screens */
+@media screen and (min-width: 1023px) {
+    .nav__language {
+        top: 32%;  /* Ajustado para escritorio */
+    }
+}
+
+.language-select {
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.5rem;
+    background-color: var(--container-color);
+    color: var(--title-color);
+    border: 1px solid var(--first-color);
+    cursor: pointer;
+    font-size: var(--smaller-font-size);
+    transition: all 0.3s ease;
+}
+
+/* Adjust for mobile devices */
+@media screen and (max-width: 1023px) {
+    .nav__language {
+        position: fixed;
+        top: 1rem;
+        right: 5.5rem;
+    }
+}
+.language-select:hover {
+    background-color: var(--first-color);
+    color: var(--title-color);
+}
+.language-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--first-color-alt);
+}
+
+/* Adjust select appearance */
+.language-select option {
+    background-color: var(--container-color);
+    color: var(--title-color);
+    padding: 1rem;
+}
+.language-select {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--container-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color-light);
+    cursor: pointer;
+    font-size: var(--smaller-font-size);
+}
+.language-select:focus {
+    outline: none;
+    border-color: var(--first-color);
+}
 /*----- RESPONSIVE TYPOGRAPHY -----*/
 @media screen and (min-width: 1152px) {
     :root {
